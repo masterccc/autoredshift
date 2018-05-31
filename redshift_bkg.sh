@@ -18,9 +18,9 @@ function setTemp(){
 	hour=$1
 	min=$2
 
-	[[ "$hour" -le "15" ]] && return
+	[[ "$hour" -le "$START_HOUR" ]] && return
 	
-	h_coeff=$[ $hour - 15 ]
+	h_coeff=$[ $hour - START_HOUR ]
 	current=$[ $BASE_TEMP - h_coeff * 300 ]
 	[[ "$min" -ge "30" ]] && current=$[ $current - 150 ]
 	[[ "$current" -lt "$MAX_TEMP" ]] && current=$MAX_TEMP
